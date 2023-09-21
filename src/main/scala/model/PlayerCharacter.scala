@@ -44,8 +44,27 @@ class PlayerCharacter(val name: String,
               val evasion: Int,
               val randomNumberGenerator: Random = new Random()) {
 
+  var HP: Int = maxHP
+  var stars: Int = Partida.Chapter / 5 + 1
+  var victories = 0
+  var norma = 1
+  var position: Panel = Tablero.begin
+
+
   /** Rolls a dice and returns a value between 1 to 6. */
   def rollDice(): Int = {
     randomNumberGenerator.nextInt(6) + 1
+  }
+
+  /** This function choose one option in a set of n options
+   *
+   * For now it just choose the first option, but in here we are
+   * going to include the usuar's input
+   * @param n Is the amount of option which the player has to pick
+   * @return The first option: the integer 0
+   */
+  def choose(n: Int): Int = {
+    0
+    /*randomNumberGenerator.nextInt(n)*/
   }
 }
