@@ -9,10 +9,11 @@ import scala.collection.mutable.ArrayBuffer
  * @param NextPanels
  */
 class bonusPanel(Characters: ArrayBuffer[PlayerCharacter],
-                 NextPanels: ArrayBuffer[Panel]) extends absPanel {
+                 NextPanels: ArrayBuffer[Panel], Id: Int) extends absPanel {
 
   val characters = Characters
   var nextPanels = NextPanels
+  val id = Id
 
   /** effect gives some stars to the Character
    * and actualizate the position of the player

@@ -7,4 +7,5 @@ lazy val root = (project in file("."))
     name := "citric-liquid",
     idePackagePrefix := Some("cl.uchile.dcc.citric"),
     libraryDependencies += "org.scalameta" %% "munit" % "0.7.29" % Test
+
   )

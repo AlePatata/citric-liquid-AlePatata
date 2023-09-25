@@ -7,11 +7,12 @@ import scala.collection.mutable.ArrayBuffer
 /** This kind of panel doesn't do anything
  *
  */
-class neutralPanel extends absPanel(Characters: ArrayBuffer[PlayerCharacter],
-  NextPanels: ArrayBuffer[Panel]){
+class neutralPanel(Characters: ArrayBuffer[PlayerCharacter],
+                   NextPanels: ArrayBuffer[Panel], Id: Int) extends absPanel{
 
   val characters = Characters
   var nextPanels = NextPanels
+  val id = Id
 
   /** effect just actualizate the position of the player
    *

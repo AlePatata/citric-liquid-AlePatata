@@ -4,10 +4,11 @@ package model
 import scala.collection.mutable.ArrayBuffer
 
 class homePanel(Characters: ArrayBuffer[PlayerCharacter],
-                NextPanels: ArrayBuffer[Panel]) extends absPanel {
+                NextPanels: ArrayBuffer[Panel], Id: Int) extends absPanel {
 
   val characters = Characters
   var nextPanels = NextPanels
+  val: id = Id
 
   /** effect do the NormaCheck and actualizate the position of the player
    *
