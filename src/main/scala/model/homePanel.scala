@@ -15,8 +15,9 @@ class homePanel(Characters: ArrayBuffer[PlayerCharacter],
    * @param player The Player Character affected
    */
   def effect(player: PlayerCharacter): Unit {
-    val roll = player.rollDice()
-
+    player.HP++
+    norma = new Norma
+    norma.NormaCheck(player)
     addCharacter (player)
   }
 }

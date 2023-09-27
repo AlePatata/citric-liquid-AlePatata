@@ -45,10 +45,10 @@ class PlayerCharacter(val name: String,
               val randomNumberGenerator: Random = new Random()) {
 
   var HP: Int = maxHP
-  var stars: Int = Partida.Chapter / 5 + 1
+  var stars: Int = Partida.Chapter / 5 + 1 // no sure
   var victories = 0
   var norma = 1
-  var position: Panel = Tablero.begin
+  var position: Panel = Tablero.begin // no sure
 
 
   /** Rolls a dice and returns a value between 1 to 6. */
@@ -59,7 +59,8 @@ class PlayerCharacter(val name: String,
   /** This function choose one option in a set of n options
    *
    * For now it just choose the first option, but in here we are
-   * going to include the usuar's input
+   * going to include the usuar's input/ or another way for pick
+   * one or another option in the game
    * @param n Is the amount of option which the player has to pick
    * @return The first option: the integer 0
    */

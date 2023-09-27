@@ -19,8 +19,8 @@ class encounterPanel(Characters: ArrayBuffer[PlayerCharacter],
    * @param player The Player Character affected
    */
   def effect(player: PlayerCharacter): Unit = {
-    combat(player, wildUnit)
-
+    c = new Combat
+    c.combat(player, wildUnit)
     addCharacter(player)
   }
 }

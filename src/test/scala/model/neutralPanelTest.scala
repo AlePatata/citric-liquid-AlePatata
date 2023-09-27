@@ -4,7 +4,7 @@ package model
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
-class PanelTest extends munit.FunSuite {
+class neutralPanelTest extends munit.FunSuite {
 
   private var characters = new ArrayBuffer[PlayerCharacter]()
   private var nextPanels = new ArrayBuffer[Panel]()
@@ -13,7 +13,7 @@ class PanelTest extends munit.FunSuite {
   var neutr2: Panel = null
   var neutr3: Panel = null
 
-  val testPlayer: PlayerCharacter = _
+  val testPlayer: PlayerCharacter = null
 
   override def beforeEach(context: BeforeEach): Unit = {
     neutr1 = new neutralPanel(characters, nextPanels, 1)
