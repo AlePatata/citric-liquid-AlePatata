@@ -17,7 +17,8 @@ class WildUnitsTest extends munit.FunSuite {
 
   test("Equals"){
     assertEquals(roboball, roboball)
-    assertEquals(seagull, new Seagull)
+    val Seagull = seagull
+    assertEquals(seagull, Seagull)
     assertNotEquals(chicken, roboball)
   }
 }

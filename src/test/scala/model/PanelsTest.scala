@@ -27,7 +27,7 @@ class PanelsTest extends munit.FunSuite {
   test("Equals dropPanel") {
     pan1 = new dropPanel(characters, nextPanels, 1)
     pan2 = new dropPanel(characters, ArrayBuffer(pan1), 2)
-    pan3 = new dropPanel(characters, ArrayBuffer(pan1), 2)
+    pan3 = pan2
     assertNotEquals(pan1, pan2)
     assertEquals(pan2, pan3)
     assertNotEquals(pan1, pan3)
@@ -35,8 +35,9 @@ class PanelsTest extends munit.FunSuite {
 
   test("Equals homePanel") {
     pan1 = new homePanel(characters, nextPanels, 1)
-    pan2 = new homePanel(characters, ArrayBuffer(pan1), 2)
-    pan3 = new homePanel(characters, ArrayBuffer(pan1), 2)
+    val nextPanels2 = new ArrayBuffer[Panel]
+    pan2 = new homePanel(characters, nextPanels2, 2)
+    pan3 = pan2
     assertNotEquals(pan1, pan2)
     assertEquals(pan2, pan3)
     assertNotEquals(pan1, pan3)

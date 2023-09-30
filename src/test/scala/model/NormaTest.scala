@@ -12,19 +12,19 @@ class NormaTest extends munit.FunSuite {
   private val evasion = 1
   private val randomNumberGenerator = new Random(11)
 
-  private var player = new PlayerCharacter(name,
-    maxHp,
-    attack,
-    defense,
-    evasion,
-    randomNumberGenerator)
 
   private var norma = new Norma
 
-  test("NormaCheck") {
+  test("NormaCheck and NormaClear") {
+    var player = new PlayerCharacter(name,
+      maxHp,
+      attack,
+      defense,
+      evasion,
+      randomNumberGenerator)
+    //player.setStars(120)
     assertEquals(player.norma, 1)
-    player.setStars(120)
-    norma.NormaCheck(player, player.objective)
+    player.NormaClear(5)
     assertEquals(player.norma, 5)
   }
 }

@@ -95,4 +95,10 @@ class PlayerCharacter(val name: String,
   def setVictories(increase: Int): Unit = {
     victories + increase
   }
+
+  def NormaClear(n: Int): Unit = {
+      norma = n
+      //if (n == 6)
+        //End()  No implemented method for finish a game
+    }
 }

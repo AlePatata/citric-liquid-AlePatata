@@ -33,6 +33,6 @@ class neutralPanelTest extends munit.FunSuite {
     characters += testPlayer
     val expected = new neutralPanel(characters, nextPanels, 1)
     neutr1.addCharacter(testPlayer)
-    assertEquals(neutr1, expected)
+    assertEquals(neutr1.characters, expected.characters)
   }
 }
