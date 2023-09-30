@@ -1,4 +1,5 @@
-package scala.model
+package cl.uchile.dcc.citric
+package model
 
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
@@ -8,9 +9,9 @@ class PanelsTest extends munit.FunSuite {
   private var characters = new ArrayBuffer[PlayerCharacter]()
   private var nextPanels = new ArrayBuffer[Panel]()
 
-  var pan1: Panel = null
-  var pan2: Panel = null
-  var pan3: Panel = null
+  var pan1: Panel = _
+  var pan2: Panel = _
+  var pan3: Panel = _
 
 
 

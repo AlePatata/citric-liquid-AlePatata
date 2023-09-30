@@ -1,4 +1,3 @@
-
 package cl.uchile.dcc.citric
 package model
 
@@ -10,15 +9,15 @@ import scala.collection.mutable.ArrayBuffer
 class neutralPanel(Characters: ArrayBuffer[PlayerCharacter],
                    NextPanels: ArrayBuffer[Panel], Id: Int) extends absPanel{
 
-  val characters = Characters
-  var nextPanels = NextPanels
-  val id = Id
+  var characters: ArrayBuffer[PlayerCharacter] = Characters
+  val nextPanels: ArrayBuffer[Panel] = NextPanels
+  val id: Int = Id
 
-  /** effect just actualizate the position of the player
+  /** effect just actualize the position of the player
    *
    * @param player The Player Character affected
    */
-  def effect(player: PlayerCharacter){
+  def effect(player: PlayerCharacter): Unit = {
     addCharacter(player)
   }
 }

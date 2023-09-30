@@ -16,20 +16,40 @@ class Norma {
    *
    * @param player is the player character thats the NormaChecks will check
    */
-  def NormaCheck(player: PlayerCharacter): Unit = {
-    if (player.stars >= 200 or player.victories >= 14) {
+  def NormaCheck(player: PlayerCharacter, objective: Stars): Unit = {
+    val stars = player.getStars
+    if (stars >= 200) {
       NormaClear(6, player)
     }
-    else if (player.stars >= 120 or player.victories >= 10) {
+    else if (stars >= 120) {
       NormaClear(5, player)
     }
-    else if (player.stars >= 70 or player.victories >= 6) {
+    else if (stars >= 70) {
       NormaClear(4, player)
     }
-    else if (player.stars >= 30 or player.victories >= 3) {
+    else if (stars >= 30) {
       NormaClear(3, player)
     }
-    else if (player.stars >= 10 or player.victories >= 1) {
+    else if (stars >= 10) {
+      NormaClear(2, player)
+    }
+  }
+
+  def NormaCheck(player: PlayerCharacter, objective: Victories): Unit = {
+    val victories = player.getVictories
+    if (victories >= 14) {
+      NormaClear(6, player)
+    }
+    else if (victories >= 10) {
+      NormaClear(5, player)
+    }
+    else if (victories >= 6) {
+      NormaClear(4, player)
+    }
+    else if (victories >= 3) {
+      NormaClear(3, player)
+    }
+    else if (victories >= 1) {
       NormaClear(2, player)
     }
   }
@@ -41,9 +61,9 @@ class Norma {
    * @param n is an integer that corresponds to the level up to modify
    * @param player is the character player to modify
    */
-  def NormaClear(n: Int, player: PlayerCharacter): Unit = {
+  private def NormaClear(n: Int, player: PlayerCharacter): Unit = {
     player.norma = n
-    if (n == 6)
-      End() // No implemented method for finish a game
+    //if (n == 6)
+      //End()  No implemented method for finish a game
   }
 }

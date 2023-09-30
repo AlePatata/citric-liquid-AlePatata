@@ -7,7 +7,7 @@ import scala.collection.mutable.ArrayBuffer
  *
  */
 class Partida {
-  var Chapter = 1
+  /*var Chapter = 1
 
   /** Play begins the process of turns, Chapters and Character movements
    *
@@ -31,5 +31,5 @@ class Partida {
         player = Characters(i)
       }
     }
-  }
+  }*/
 }

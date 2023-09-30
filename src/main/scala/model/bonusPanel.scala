@@ -11,21 +11,28 @@ import scala.collection.mutable.ArrayBuffer
 class bonusPanel(Characters: ArrayBuffer[PlayerCharacter],
                  NextPanels: ArrayBuffer[Panel], Id: Int) extends absPanel {
 
-  val characters = Characters
-  var nextPanels = NextPanels
-  val id = Id
+  override var characters: ArrayBuffer[PlayerCharacter] = Characters
+  override val nextPanels: ArrayBuffer[Panel] = NextPanels
+  /** Unique number for each panel which identifies it
+   *
+   * In case of have multiplies types of the same panel (e.g. 2 neutral panels
+   * without players characters on them and with the same list of next panels)
+   * this integer will distinguish it from another with similar features
+   */
+  override val id: Int = Id
 
   /** effect gives some stars to the Character
-   * and actualizate the position of the player
+   * and actualize the position of the player
    *
    * @param player The Player Character affected
    */
   def effect(player: PlayerCharacter): Unit = {
     val roll = player.rollDice()
-    c = roll * player.norma
+    var c = roll * player.norma
     if (c > roll * 3) c = roll * 3
-    player.stars += c
+    player.setStars(c)
 
     addCharacter(player)
   }
+
 }

@@ -9,17 +9,17 @@ class encounterPanel(Characters: ArrayBuffer[PlayerCharacter],
                      Id: Int,
                      wildUnit: WildUnit) extends absPanel {
 
-  val characters = Characters
-  var nextPanels = NextPanels
-  val id = Id
+  var characters: ArrayBuffer[PlayerCharacter] = Characters
+  val nextPanels: ArrayBuffer[Panel] = NextPanels
+  val id: Int = Id
 
   /** effect put the player and a wild unit in a combat
-   * and actualizate the position of the player
+   * and actualize the position of the player
    *
    * @param player The Player Character affected
    */
   def effect(player: PlayerCharacter): Unit = {
-    c = new Combat
+    val c = new Combat
     c.combat(player, wildUnit)
     addCharacter(player)
   }

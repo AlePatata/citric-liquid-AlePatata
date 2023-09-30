@@ -15,9 +15,9 @@ import scala.collection.mutable.ArrayBuffer
 class dropPanel(Characters: ArrayBuffer[PlayerCharacter],
                 NextPanels: ArrayBuffer[Panel], Id: Int) extends absPanel {
 
-  val characters = Characters
-  var nextPanels = NextPanels
-  val id = Id
+  var characters: ArrayBuffer[PlayerCharacter] = Characters
+  val nextPanels: ArrayBuffer[Panel] = NextPanels
+  val id: Int = Id
 
   /** effect stills some stars to the Character
    * and actualizate the position of the player
@@ -26,8 +26,7 @@ class dropPanel(Characters: ArrayBuffer[PlayerCharacter],
    */
   def effect(player: PlayerCharacter): Unit = {
     val roll = player.rollDice()
-    player.stars -= roll * player.norma
-
+    player.setStars(roll * player.norma)
     addCharacter(player)
   }
 }

@@ -15,7 +15,7 @@ class Tablero(size: Int, Characters: ArrayBuffer[PlayerCharacter]) {
    * This is going to determinate the turns in the entire Partida
    * @param Characters is the list of characters which will play
    */
-  def inicializate(Characters: ArrayBuffer[PlayerCharacter]): Unit = {
+  /*def inicializate(Characters: ArrayBuffer[PlayerCharacter]): Unit = {
     n: Random = new Random()
     next = n.nextInt(4)
     turns: ArrayBuffer[PlayerCharacter]
@@ -33,6 +33,6 @@ class Tablero(size: Int, Characters: ArrayBuffer[PlayerCharacter]) {
    */
   def begin(player: PlayerCharacter) : Panel {
     player.position = homePanel
-  }
+  }*/
 
 }

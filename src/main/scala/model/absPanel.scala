@@ -5,8 +5,8 @@ import scala.collection.mutable.ArrayBuffer
 
 abstract class absPanel extends Panel {
 
-  val characters: ArrayBuffer[PlayerCharacter]
-  var nextPanels: ArrayBuffer[Panel]
+  var characters: ArrayBuffer[PlayerCharacter]
+  val nextPanels: ArrayBuffer[Panel]
 
   def addCharacter(player: PlayerCharacter): Unit = {
     characters += player
@@ -20,4 +20,13 @@ abstract class absPanel extends Panel {
    * @param player The player character to affect.
    */
   def effect(player: PlayerCharacter): Unit
+
+  /*def getNextPanels: ArrayBuffer[Panel] = {
+    val aux = nextPanels
+    aux
+  }
+
+  def setNextPanels(newNextPanels: ArrayBuffer[Panel]): Unit = {
+    newNextPanels
+  }*/
 }

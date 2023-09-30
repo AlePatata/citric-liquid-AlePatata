@@ -24,7 +24,7 @@ import scala.util.Random
   * generation behaviors are desired.
   *
   * @param name The name of the player. This is an identifier and should be unique.
-  * @param maxHp The maximum health points a player can have. It represents the player's endurance.
+  * @param maxHP The maximum health points a player can have. It represents the player's endurance.
   * @param attack The player's capability to deal damage to opponents.
   * @param defense The player's capability to resist or mitigate damage from opponents.
   * @param evasion The player's skill to completely avoid certain attacks.
@@ -38,17 +38,17 @@ import scala.util.Random
   * @author [[https://github.com/~Your github account~/ ~Your Name~]]
   */
 class PlayerCharacter(val name: String,
-              val maxHp: Int,
+              val maxHP: Int,
               val attack: Int,
               val defense: Int,
               val evasion: Int,
               val randomNumberGenerator: Random = new Random()) {
 
-  var HP: Int = maxHP
-  var stars: Int = Partida.Chapter / 5 + 1 // no sure
-  var victories = 0
+  private var HP: Int = maxHP
+  private var stars: Int = 1
+  private var victories = 0
   var norma = 1
-  var position: Panel = Tablero.begin // no sure
+  var objective = new Stars(stars)
 
 
   /** Rolls a dice and returns a value between 1 to 6. */
@@ -67,5 +67,32 @@ class PlayerCharacter(val name: String,
   def choose(n: Int): Int = {
     0
     /*randomNumberGenerator.nextInt(n)*/
+  }
+
+  def getHP: Int = {
+    val aux = HP
+    aux
+  }
+
+  def setHP(increase: Int): Unit = {
+    HP + increase
+  }
+
+  def getStars: Int = {
+    val aux = stars
+    aux
+  }
+
+  def setStars(increase: Int): Unit = {
+    stars + increase
+  }
+
+  def getVictories: Int = {
+    val aux = victories
+    aux
+  }
+
+  def setVictories(increase: Int): Unit = {
+    victories + increase
   }
 }

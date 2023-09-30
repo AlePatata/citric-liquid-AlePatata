@@ -15,7 +15,7 @@ class PlayerCharacterTest extends munit.FunSuite {
   private val attack = 1
   private val defense = 1
   private val evasion = 1
-  private val randomNumberGenerator: Random = null
+  private var randomNumberGenerator: Random = _
   /* Add any other constants you need here... */
 
   /*
@@ -42,7 +42,7 @@ class PlayerCharacterTest extends munit.FunSuite {
 
   test("A character should have correctly set their attributes") {
     assertEquals(character.name, name)
-    assertEquals(character.maxHp, maxHp)
+    assertEquals(character.maxHP, maxHp)
     assertEquals(character.attack, attack)
     assertEquals(character.defense, defense)
     assertEquals(character.evasion, evasion)

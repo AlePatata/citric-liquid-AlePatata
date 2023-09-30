@@ -2,16 +2,15 @@ package cl.uchile.dcc.citric
 package model
 
 import scala.collection.mutable.ArrayBuffer
-import scala.util.Random
 
 class neutralPanelTest extends munit.FunSuite {
 
   private var characters = new ArrayBuffer[PlayerCharacter]()
   private var nextPanels = new ArrayBuffer[Panel]()
 
-  var neutr1: Panel = null
-  var neutr2: Panel = null
-  var neutr3: Panel = null
+  var neutr1: Panel = _
+  var neutr2: Panel = _
+  var neutr3: Panel = _
 
   val testPlayer: PlayerCharacter = null
 
@@ -31,7 +30,9 @@ class neutralPanelTest extends munit.FunSuite {
   }
 
   test("Add players") {
-    val expected = neutralPanel(new ListBuffer(testPlayer), nextPanels, 1)
-    assertEquals(neutr1.addCharacter(testPlayer), expected)
+    characters += testPlayer
+    val expected = new neutralPanel(characters, nextPanels, 1)
+    neutr1.addCharacter(testPlayer)
+    assertEquals(neutr1, expected)
   }
 }
