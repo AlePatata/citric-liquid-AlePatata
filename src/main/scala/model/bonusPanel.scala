@@ -9,17 +9,11 @@ import scala.collection.mutable.ArrayBuffer
  * @param NextPanels
  */
 class bonusPanel(Characters: ArrayBuffer[PlayerCharacter],
-                 NextPanels: ArrayBuffer[Panel], Id: Int) extends absPanel {
+                 NextPanels: ArrayBuffer[Panel]) extends absPanel {
 
   override var characters: ArrayBuffer[PlayerCharacter] = Characters
   override val nextPanels: ArrayBuffer[Panel] = NextPanels
-  /** Unique number for each panel which identifies it
-   *
-   * In case of have multiplies types of the same panel (e.g. 2 neutral panels
-   * without players characters on them and with the same list of next panels)
-   * this integer will distinguish it from another with similar features
-   */
-  override val id: Int = Id
+
 
   /** effect gives some stars to the Character
    * and actualize the position of the player

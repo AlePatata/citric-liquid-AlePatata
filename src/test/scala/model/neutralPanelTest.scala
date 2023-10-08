@@ -15,9 +15,9 @@ class neutralPanelTest extends munit.FunSuite {
   val testPlayer: PlayerCharacter = null
 
   override def beforeEach(context: BeforeEach): Unit = {
-    neutr1 = new neutralPanel(characters, nextPanels, 1)
-    neutr2 = new neutralPanel(characters, ArrayBuffer(neutr1), 2)
-    neutr3 = new neutralPanel(characters, ArrayBuffer(neutr1), 3)
+    neutr1 = new neutralPanel(characters, nextPanels)
+    neutr2 = new neutralPanel(characters, ArrayBuffer(neutr1))
+    neutr3 = new neutralPanel(characters, ArrayBuffer(neutr1))
   }
 
   test("Equals trivial") {
@@ -31,7 +31,7 @@ class neutralPanelTest extends munit.FunSuite {
 
   test("Add players") {
     characters += testPlayer
-    val expected = new neutralPanel(characters, nextPanels, 1)
+    val expected = new neutralPanel(characters, nextPanels)
     neutr1.addCharacter(testPlayer)
     assertEquals(neutr1.characters, expected.characters)
   }

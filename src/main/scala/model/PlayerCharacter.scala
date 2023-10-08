@@ -42,11 +42,13 @@ class PlayerCharacter(val name: String,
               val attack: Int,
               val defense: Int,
               val evasion: Int,
-              val randomNumberGenerator: Random = new Random()) {
+              val randomNumberGenerator: Random = new Random()) extends Units{
 
   private var HP: Int = maxHP
   private var stars: Int = 1
   private var victories = 0
+  private var Attack = attack
+  private var Defense = defense
   var norma = 1
   var objective = new Stars(stars)
 
@@ -69,24 +71,6 @@ class PlayerCharacter(val name: String,
     /*randomNumberGenerator.nextInt(n)*/
   }
 
-  def getHP: Int = {
-    val aux = HP
-    aux
-  }
-
-  def setHP(increase: Int): Unit = {
-    HP + increase
-  }
-
-  def getStars: Int = {
-    val aux = stars
-    aux
-  }
-
-  def setStars(increase: Int): Unit = {
-    stars + increase
-  }
-
   def getVictories: Int = {
     val aux = victories
     aux
@@ -100,5 +84,41 @@ class PlayerCharacter(val name: String,
       norma = n
       //if (n == 6)
         //End()  No implemented method for finish a game
-    }
+  }
+
+  def getEva: Int = {
+    val aux = evasion
+    aux
+  }
+
+  def getAttack: Int = {
+    val aux = Attack
+    aux
+  }
+  def setAttack(increase: Int): Unit = {
+    Attack += increase
+  }
+
+  def getStars: Int = {
+    val aux = stars
+    aux
+  }
+
+  def setStars(increase: Int): Unit = {
+    stars += increase
+  }
+
+  def getDefense: Int = {
+    val aux = Defense
+    aux
+  }
+
+  def getHP: Int = {
+    val aux = HP
+    aux
+  }
+
+  def setHP(increase: Int): Unit = {
+    HP += increase
+  }
 }

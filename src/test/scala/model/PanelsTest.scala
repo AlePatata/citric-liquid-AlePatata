@@ -16,17 +16,17 @@ class PanelsTest extends munit.FunSuite {
 
 
   test("Equals bonusPanel") {
-    pan1 = new bonusPanel(characters, nextPanels, 1)
-    pan2 = new bonusPanel(characters, ArrayBuffer(pan1), 2)
-    pan3 = new neutralPanel(characters, ArrayBuffer(pan1), 2)
+    pan1 = new bonusPanel(characters, nextPanels)
+    pan2 = new bonusPanel(characters, ArrayBuffer(pan1))
+    pan3 = new neutralPanel(characters, ArrayBuffer(pan1))
     assertNotEquals(pan1, pan2)
     assertNotEquals(pan2, pan3)
     assertNotEquals(pan1, pan3)
   }
 
   test("Equals dropPanel") {
-    pan1 = new dropPanel(characters, nextPanels, 1)
-    pan2 = new dropPanel(characters, ArrayBuffer(pan1), 2)
+    pan1 = new dropPanel(characters, nextPanels)
+    pan2 = new dropPanel(characters, ArrayBuffer(pan1))
     pan3 = pan2
     assertNotEquals(pan1, pan2)
     assertEquals(pan2, pan3)
@@ -34,9 +34,9 @@ class PanelsTest extends munit.FunSuite {
   }
 
   test("Equals homePanel") {
-    pan1 = new homePanel(characters, nextPanels, 1)
+    pan1 = new homePanel(characters, nextPanels)
     val nextPanels2 = new ArrayBuffer[Panel]
-    pan2 = new homePanel(characters, nextPanels2, 2)
+    pan2 = new homePanel(characters, nextPanels2)
     pan3 = pan2
     assertNotEquals(pan1, pan2)
     assertEquals(pan2, pan3)
@@ -59,7 +59,7 @@ class PanelsTest extends munit.FunSuite {
 
   /*
   test("Effects") {
-    pan1 = new dropPanel(characters, nextPanels, 1)
+    pan1 = new dropPanel(characters, nextPanels)
     pan1.effect(player)
     assertEquals(player.stars, )
   }

@@ -32,14 +32,6 @@ trait Panel {
    */
   val nextPanels: ArrayBuffer[Panel]
 
-  /** Unique number for each panel which identifies it
-   *
-   * In case of have multiplies types of the same panel (e.g. 2 neutral panels
-   * without players characters on them and with the same list of next panels)
-   * this integer will distinguish it from another with similar features
-   */
-  val id: Int
-
   /** Adds a character to the list of characters currently on this panel.
     *
     * This might be invoked when a player moves to this panel or starts their turn on it.
