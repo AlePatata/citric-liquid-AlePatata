@@ -1,5 +1,7 @@
 package cl.uchile.dcc.citric
-package model
+package model.Units
+
+import model.Stars
 
 import scala.util.Random
 

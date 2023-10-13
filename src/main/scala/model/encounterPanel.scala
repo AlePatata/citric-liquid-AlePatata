@@ -1,6 +1,9 @@
 package cl.uchile.dcc.citric
 package model
 
+import cl.uchile.dcc.citric.model.Panels.absPanel
+import cl.uchile.dcc.citric.model.Units.{PlayerCharacter, WildUnit}
+
 import scala.collection.mutable.ArrayBuffer
 
 
@@ -17,7 +20,7 @@ class encounterPanel(Characters: ArrayBuffer[PlayerCharacter],
    * @param player The Player Character affected
    */
   def effect(player: PlayerCharacter): Unit = {
-    new Combat(player: PlayerCharacter, wildUnit)
+    new WildCombat(player: PlayerCharacter, wildUnit)
 
     addCharacter(player)
   }

@@ -1,6 +1,9 @@
 package cl.uchile.dcc.citric
 package model
 
+import cl.uchile.dcc.citric.model.Panels.neutralPanel
+import cl.uchile.dcc.citric.model.Units.PlayerCharacter
+
 import scala.collection.mutable.ArrayBuffer
 
 class neutralPanelTest extends munit.FunSuite {

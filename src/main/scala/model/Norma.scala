@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
 package model
 
+import model.Units.PlayerCharacter
+
 /** Norma represents the level of a player in the game
  *
  * Corresponds to a set of methods for increase the own norma

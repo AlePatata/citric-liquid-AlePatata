@@ -1,7 +1,5 @@
 package cl.uchile.dcc.citric
-package model
-
-import scala.collection.mutable.ArrayBuffer
+package model.Panels
 
 /** Partida is the enviroment in which the game will take place
  *

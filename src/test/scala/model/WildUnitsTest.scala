@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
 package model
 
+import cl.uchile.dcc.citric.model.Units.{Chicken, RoboBall, Seagull, WildUnit}
+
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
