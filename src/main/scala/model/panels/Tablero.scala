@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
-package model.Panels
+package model.panels
 
-import cl.uchile.dcc.citric.model.Units.PlayerCharacter
+import cl.uchile.dcc.citric.model.units.PlayerCharacter
 import scala.collection.mutable.ArrayBuffer
 
 /** This class will organizate and inicialize the map of the game

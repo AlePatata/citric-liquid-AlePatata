@@ -1,12 +1,12 @@
 package cl.uchile.dcc.citric
-package model.Units
+package model.units
 
-class Seagull extends WildUnit {
-  private val attack = 1
-  val defense: Int = -1
+class RoboBall extends WildUnit with Units{
+  private val attack: Int = -1
+  val defense = 1
   val evasion: Int = -1
-  private var HP = 3
-  private var stars = 0
+  private var HP: Int = 3
+  private var stars: Int  = 0
 
   def setHP(increase: Int): Unit = {
     HP += increase

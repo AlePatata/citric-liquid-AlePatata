@@ -1,8 +1,8 @@
 package cl.uchile.dcc.citric
-package model
+package model.paneltests
 
-import cl.uchile.dcc.citric.model.Panels.neutralPanel
-import cl.uchile.dcc.citric.model.Units.PlayerCharacter
+import model.panels.{NeutralPanel, Panel}
+import model.units.PlayerCharacter
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -18,9 +18,9 @@ class neutralPanelTest extends munit.FunSuite {
   val testPlayer: PlayerCharacter = null
 
   override def beforeEach(context: BeforeEach): Unit = {
-    neutr1 = new neutralPanel(characters, nextPanels)
-    neutr2 = new neutralPanel(characters, ArrayBuffer(neutr1))
-    neutr3 = new neutralPanel(characters, ArrayBuffer(neutr1))
+    neutr1 = new NeutralPanel(characters, nextPanels)
+    neutr2 = new NeutralPanel(characters, ArrayBuffer(neutr1))
+    neutr3 = new NeutralPanel(characters, ArrayBuffer(neutr1))
   }
 
   test("Equals trivial") {
@@ -34,7 +34,7 @@ class neutralPanelTest extends munit.FunSuite {
 
   test("Add players") {
     characters += testPlayer
-    val expected = new neutralPanel(characters, nextPanels)
+    val expected = new NeutralPanel(characters, nextPanels)
     neutr1.addCharacter(testPlayer)
     assertEquals(neutr1.characters, expected.characters)
   }

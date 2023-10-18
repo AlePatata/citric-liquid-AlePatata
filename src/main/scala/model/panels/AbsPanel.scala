@@ -1,12 +1,11 @@
 package cl.uchile.dcc.citric
-package model.Panels
+package model.panels
 
-import model.Panel
-import cl.uchile.dcc.citric.model.Units.PlayerCharacter
+import cl.uchile.dcc.citric.model.units.PlayerCharacter
 
 import scala.collection.mutable.ArrayBuffer
 
-abstract class absPanel extends Panel {
+abstract class AbsPanel extends Panel {
 
   var characters: ArrayBuffer[PlayerCharacter]
   val nextPanels: ArrayBuffer[Panel]
@@ -18,11 +17,13 @@ abstract class absPanel extends Panel {
     characters -= player
   }
 
-  /** For each type of panel the function will affect the player in a different way.
-   *
-   * @param player The player character to affect.
-   */
-  def effect(player: PlayerCharacter): Unit
+  def addPanel(panel: Panel): Unit = {
+    nextPanels += panel
+  }
+
+  def removePanel(panel: Panel): Unit = {
+    nextPanels -= panel
+  }
 
   /*def getNextPanels: ArrayBuffer[Panel] = {
     val aux = nextPanels

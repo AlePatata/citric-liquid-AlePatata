@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model.Panels
+package model.panels
 
 /** Partida is the enviroment in which the game will take place
  *
@@ -21,7 +21,7 @@ class Partida {
         for(mov: Int = 0, mov < roll, mov++) {
           player.position.removeCharacter(player)
           player.position = player.position.nextPanels(player.choose(player.position.nextPanels.size))
-        } player.position.effect(player)
+        } player.position.apply(player)
         if (player.norma == 6) {
           i = n
           Chapter = 5

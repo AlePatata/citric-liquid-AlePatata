@@ -1,4 +1,4 @@
-package cl.uchile.dcc.citric.model.Units
+package cl.uchile.dcc.citric.model.units
 
 class Chicken extends WildUnit {
   private val attack: Int = -1

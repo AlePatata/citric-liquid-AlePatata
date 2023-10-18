@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model.Units
+package model.units
 
 trait WildUnit extends Units {
 }

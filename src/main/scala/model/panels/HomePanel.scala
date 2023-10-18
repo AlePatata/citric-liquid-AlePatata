@@ -1,22 +1,22 @@
 package cl.uchile.dcc.citric
-package model.Panels
+package model.panels
 
-import model.{Norma, Panel}
-import cl.uchile.dcc.citric.model.Units.PlayerCharacter
+import model.Norma
+import cl.uchile.dcc.citric.model.units.PlayerCharacter
 
 import scala.collection.mutable.ArrayBuffer
 
-class homePanel(Characters: ArrayBuffer[PlayerCharacter],
-                NextPanels: ArrayBuffer[Panel]) extends absPanel {
+class HomePanel(Characters: ArrayBuffer[PlayerCharacter],
+                NextPanels: ArrayBuffer[Panel]) extends AbsPanel {
 
   var characters: ArrayBuffer[PlayerCharacter] = Characters
   val nextPanels: ArrayBuffer[Panel] = NextPanels
 
-  /** effect do the NormaCheck and actualizate the position of the player
+  /** apply do the NormaCheck and actualizate the position of the player
    *
    * @param player The Player Character affected
    */
-  def effect(player: PlayerCharacter): Unit = {
+  def apply(player: PlayerCharacter): Unit = {
     player.setHP(1)
     val norma = new Norma
     norma.NormaCheck(player, player.objective)

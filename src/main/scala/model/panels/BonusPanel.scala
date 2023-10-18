@@ -1,8 +1,7 @@
 package cl.uchile.dcc.citric
-package model.Panels
+package model.panels
 
-import model.Panel
-import cl.uchile.dcc.citric.model.Units.PlayerCharacter
+import cl.uchile.dcc.citric.model.units.PlayerCharacter
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -11,19 +10,19 @@ import scala.collection.mutable.ArrayBuffer
  * @param Characters
  * @param NextPanels
  */
-class bonusPanel(Characters: ArrayBuffer[PlayerCharacter],
-                 NextPanels: ArrayBuffer[Panel]) extends absPanel {
+class BonusPanel(Characters: ArrayBuffer[PlayerCharacter],
+                 NextPanels: ArrayBuffer[Panel]) extends AbsPanel {
 
   override var characters: ArrayBuffer[PlayerCharacter] = Characters
   override val nextPanels: ArrayBuffer[Panel] = NextPanels
 
 
-  /** effect gives some stars to the Character
+  /** apply gives some stars to the Character
    * and actualize the position of the player
    *
    * @param player The Player Character affected
    */
-  def effect(player: PlayerCharacter): Unit = {
+  def apply(player: PlayerCharacter): Unit = {
     val roll = player.rollDice()
     var c = roll * player.norma
     if (c > roll * 3) c = roll * 3

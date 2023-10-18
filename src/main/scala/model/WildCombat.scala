@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model
 
-import model.Units.{PlayerCharacter, WildUnit}
+import model.units.{PlayerCharacter, WildUnit}
 
 
 class WildCombat(attacker: PlayerCharacter, attacked: WildUnit) {

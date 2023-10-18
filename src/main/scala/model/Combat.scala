@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model
 
-import cl.uchile.dcc.citric.model.Units.PlayerCharacter
+import cl.uchile.dcc.citric.model.units.PlayerCharacter
 
 import scala.math
 
