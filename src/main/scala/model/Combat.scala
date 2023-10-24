@@ -26,7 +26,7 @@ class Combat(attacker: PlayerCharacter, attacked: PlayerCharacter) {
 
   private def defend(attacker: PlayerCharacter, attacked: PlayerCharacter): Int = {
     val rollDef = attacked.rollDice()
-    val damage = math.max(1, roll + attacker.getAttack - (rollDef + attacked.defense))
+    val damage = math.max(1, roll + attacker.getAttack - (rollDef + attacked.getDefense))
     damage
   }
 

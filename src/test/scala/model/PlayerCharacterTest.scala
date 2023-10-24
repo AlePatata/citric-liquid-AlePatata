@@ -45,9 +45,9 @@ class PlayerCharacterTest extends munit.FunSuite {
   test("A character should have correctly set their attributes") {
     assertEquals(character.name, name)
     assertEquals(character.maxHP, maxHp)
-    assertEquals(character.attack, attack)
-    assertEquals(character.defense, defense)
-    assertEquals(character.evasion, evasion)
+    assertEquals(character.getAttack, attack)
+    assertEquals(character.getDefense, defense)
+    assertEquals(character.getEva, evasion)
   }
 
   // Two ways to test randomness (you can use any of them):

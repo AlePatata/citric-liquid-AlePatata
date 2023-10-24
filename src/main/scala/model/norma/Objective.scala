@@ -1,9 +1,10 @@
 package cl.uchile.dcc.citric
-package model
+package model.norma
 
-//trait Objective
+trait Objective{
 
-//abstract class Objective extends Objective
+}
+
 
 class Stars(stars: Int) {
 

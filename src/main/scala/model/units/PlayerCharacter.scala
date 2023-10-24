@@ -1,8 +1,7 @@
 package cl.uchile.dcc.citric
 package model.units
 
-import model.Stars
-
+import cl.uchile.dcc.citric.model.norma.Stars
 import scala.util.Random
 
 /** The `PlayerCharacter` class represents a character or avatar in the game, encapsulating
@@ -41,16 +40,18 @@ import scala.util.Random
   */
 class PlayerCharacter(val name: String,
               val maxHP: Int,
-              val attack: Int,
-              val defense: Int,
-              val evasion: Int,
-              val randomNumberGenerator: Random = new Random()) extends Units{
+              val Attack: Int,
+              val Defense: Int,
+              val Evasion: Int,
+              val randomNumberGenerator: Random = new Random())
+  extends AUnits{
 
-  private var HP: Int = maxHP
-  private var stars: Int = 1
+  protected var HP: Int = maxHP
+  protected var stars: Int = 1
+  protected var attack: Int = Attack
+  protected var defense: Int = Defense
+  protected var evasion: Int = Evasion
   private var victories = 0
-  private var Attack = attack
-  private var Defense = defense
   var norma = 1
   var objective = new Stars(stars)
 
@@ -63,7 +64,7 @@ class PlayerCharacter(val name: String,
   /** This function choose one option in a set of n options
    *
    * For now it just choose the first option, but in here we are
-   * going to include the usuar's input/ or another way for pick
+   * going to include the user's input/ or another way for pick
    * one or another option in the game
    * @param n Is the amount of option which the player has to pick
    * @return The first option: the integer 0
@@ -73,54 +74,16 @@ class PlayerCharacter(val name: String,
     /*randomNumberGenerator.nextInt(n)*/
   }
 
-  def getVictories: Int = {
-    val aux = victories
-    aux
-  }
-
-  def setVictories(increase: Int): Unit = {
-    victories + increase
-  }
-
   def NormaClear(n: Int): Unit = {
       norma = n
       //if (n == 6)
         //End()  No implemented method for finish a game
   }
-
-  def getEva: Int = {
-    val aux = evasion
+  def setVictories(increase: Int): Unit = {
+    victories + increase
+  }
+  def getVictories: Int = {
+    val aux = victories
     aux
-  }
-
-  def getAttack: Int = {
-    val aux = Attack
-    aux
-  }
-  def setAttack(increase: Int): Unit = {
-    Attack += increase
-  }
-
-  def getStars: Int = {
-    val aux = stars
-    aux
-  }
-
-  def setStars(increase: Int): Unit = {
-    stars += increase
-  }
-
-  def getDefense: Int = {
-    val aux = Defense
-    aux
-  }
-
-  def getHP: Int = {
-    val aux = HP
-    aux
-  }
-
-  def setHP(increase: Int): Unit = {
-    HP += increase
   }
 }
