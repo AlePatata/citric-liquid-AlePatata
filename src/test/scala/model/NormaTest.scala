@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model
 
-import cl.uchile.dcc.citric.model.norma.Norma
+import cl.uchile.dcc.citric.model.norma.AbsNorma
 import cl.uchile.dcc.citric.model.units.PlayerCharacter
 
 import scala.util.Random
@@ -16,8 +16,6 @@ class NormaTest extends munit.FunSuite {
   private val randomNumberGenerator = new Random(11)
 
 
-  private var norma = new Norma
-
   test("NormaCheck and NormaClear") {
     var player = new PlayerCharacter(name,
       maxHp,
@@ -25,9 +23,9 @@ class NormaTest extends munit.FunSuite {
       defense,
       evasion,
       randomNumberGenerator)
-    //player.setStars(120)
-    assertEquals(player.norma, 1)
+    player.setStars(120)
+    assertEquals(player.getNorma.getLevel, 1)
     player.NormaClear(5)
-    assertEquals(player.norma, 5)
+    assertEquals(player.getNorma.getLevel, 5)
   }
 }

@@ -49,14 +49,21 @@ class PanelsTest extends munit.FunSuite {
   private val attack = 1
   private val defense = 1
   private val evasion = 1
-  private val randomNumberGenerator: Random = null
+  private var randomNumberGenerator: Random = _
 
-  private var player = new PlayerCharacter(name,
-    maxHp,
-    attack,
-    defense,
-    evasion,
-    randomNumberGenerator)
+  private var player: PlayerCharacter = _
+
+  override def beforeEach(context: BeforeEach): Unit = {
+    player = new PlayerCharacter(
+      name,
+      maxHp,
+      attack,
+      defense,
+      evasion,
+      randomNumberGenerator
+    )
+    randomNumberGenerator = new Random(11)
+  }
 
   test("Añadir Jugadores") {
     pan1 = new NeutralPanel(characters, nextPanels)
@@ -73,26 +80,64 @@ class PanelsTest extends munit.FunSuite {
     pan1.removeCharacter(player)
     assertEquals(characters1, characters)
   }
+
+  test("Añadir Paneles") {
+    pan1 = new NeutralPanel(characters, nextPanels)
+    pan2 = new NeutralPanel(characters, nextPanels)
+    val panels: ArrayBuffer[Panel] = nextPanels
+    panels += pan2
+    pan1.addPanel(pan2)
+    assertEquals(pan1.nextPanels, panels)
+  }
+
+  test("Remover Paneles") {
+    val panels = ArrayBuffer[Panel](pan2)
+    pan1 = new NeutralPanel(characters, panels)
+    pan2 = new NeutralPanel(characters, nextPanels)
+    panels -= pan2
+
+    pan1.removePanel(pan2)
+    assertEquals(pan1.nextPanels, panels)
+  }
+
+
   test("Efecto de NeutralPanel") {
-      pan1 = new NeutralPanel(characters, nextPanels)
-      val player1 = player
-      pan1.apply(player)
-      assertEquals(player, player1)
-    }
+    pan1 = new NeutralPanel(characters, nextPanels)
+    val player1 = player
+    pan1.apply(player)
+    assertEquals(player, player1)
+  }
+
   test("Efecto de HomePanel") {
     pan1 = new HomePanel(characters, nextPanels)
     pan1.apply(player)
-    assertEquals(player.norma, 1)
-    player.setStars(200)
+    assertEquals(player.getNorma.getLevel, 1)
+    player.setStars(29)
     pan1.apply(player)
-    assertEquals(player.norma, 6)
+    assertEquals(player.getNorma.getLevel, 3)
+    player.setStars(170)
+    pan1.apply(player)
+    assertEquals(player.getNorma.getLevel, 6)
   }
-  
-  /*test("Effects") {
-    pan1 = new DropPanel(characters, nextPanels)
-    val stars = player.getStars
+
+  test("Efecto BonusPanel") {
+    pan1 = new BonusPanel(characters, nextPanels)
+    val other =
+      new PlayerCharacter(name, maxHp, attack, defense, evasion, new Random(11))
     pan1.apply(player)
-    assertNotEquals(player.getStars, stars)
-  }*/
+    pan1.apply(other)
+
+    assertEquals(player.getStars, other.getStars)
+
+  }
+  test("Efecto DropPanel") {
+    pan1 = new DropPanel(characters, nextPanels)
+    val other =
+      new PlayerCharacter(name, maxHp, attack, defense, evasion, new Random(11))
+    pan1.apply(player)
+    pan1.apply(other)
+
+    assertEquals(player.getStars, other.getStars)
+  }
   
 }

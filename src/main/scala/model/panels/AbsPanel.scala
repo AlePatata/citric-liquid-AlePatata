@@ -10,13 +10,6 @@ abstract class AbsPanel extends Panel {
   var characters: ArrayBuffer[PlayerCharacter]
   val nextPanels: ArrayBuffer[Panel]
 
-  def addCharacter(player: PlayerCharacter): Unit = {
-    characters += player
-  }
-  def removeCharacter(player: PlayerCharacter): Unit = {
-    characters -= player
-  }
-
   def addPanel(panel: Panel): Unit = {
     nextPanels += panel
   }
@@ -24,6 +17,14 @@ abstract class AbsPanel extends Panel {
   def removePanel(panel: Panel): Unit = {
     nextPanels -= panel
   }
+  def addCharacter(player: PlayerCharacter): Unit = {
+    characters += player
+  }
+  def removeCharacter(player: PlayerCharacter): Unit = {
+    characters -= player
+  }
+
+
 
   /*def getNextPanels: ArrayBuffer[Panel] = {
     val aux = nextPanels

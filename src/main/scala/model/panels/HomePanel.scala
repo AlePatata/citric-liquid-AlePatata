@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.panels
 
-import cl.uchile.dcc.citric.model.norma.Norma
+import cl.uchile.dcc.citric.model.norma.AbsNorma
 import cl.uchile.dcc.citric.model.units.PlayerCharacter
 
 import scala.collection.mutable.ArrayBuffer
@@ -18,8 +18,7 @@ class HomePanel(Characters: ArrayBuffer[PlayerCharacter],
    */
   def apply(player: PlayerCharacter): Unit = {
     player.setHP(1)
-    val norma = new Norma
-    norma.NormaCheck(player, player.objective)
-    addCharacter (player)
+    player.getNorma.NormaCheck(player)
+    addCharacter(player)
   }
 }

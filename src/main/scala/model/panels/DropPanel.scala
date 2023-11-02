@@ -27,7 +27,7 @@ class DropPanel(Characters: ArrayBuffer[PlayerCharacter],
    */
   def apply(player: PlayerCharacter): Unit = {
     val roll = player.rollDice()
-    player.setStars(roll * player.norma)
+    player.setStars(roll * player.getNorma.getLevel)
     addCharacter(player)
   }
 }

@@ -5,7 +5,7 @@ abstract class AUnits extends Units {
   protected var HP: Int
   protected var attack: Int
   protected var defense: Int
-  protected var evasion: Int
+  protected val evasion: Int
   protected var stars: Int
 
   def getHP: Int = {
@@ -14,6 +14,7 @@ abstract class AUnits extends Units {
   }
   def setHP(increase: Int): Unit = {
     HP += increase
+    assert(HP >= 0)
   }
   def getAttack: Int = {
     val aux = attack
@@ -33,14 +34,15 @@ abstract class AUnits extends Units {
     val aux = evasion
     aux
   }
-  def setEva(increase: Int): Unit = {
-    evasion += increase
-  }
   def getStars: Int = {
     val aux = stars
     aux
   }
   def setStars(increase: Int): Unit = {
     stars += increase
+  }
+  def IsKO: Boolean = {
+    if (getHP == 0) true
+    else false
   }
 }

@@ -18,6 +18,8 @@ import scala.collection.mutable.ArrayBuffer
   */
 trait Panel {
 
+
+
   /** Array of the characters currently positioned on this panel.
    *
    * In the game, multiple characters might be on the same panel at once, e.g., if multiple players
@@ -49,6 +51,9 @@ trait Panel {
    * @param player The player character to remove from this panel.
    */
   def removeCharacter(player: PlayerCharacter): Unit
+
+  def addPanel(pan2: Panel): Unit
+  def removePanel(pan2: Panel): Unit
 
   /** For each type of panel the function will affect the player in a different way.
    *

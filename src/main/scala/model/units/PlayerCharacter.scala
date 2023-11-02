@@ -1,7 +1,8 @@
 package cl.uchile.dcc.citric
 package model.units
 
-import cl.uchile.dcc.citric.model.norma.Stars
+import cl.uchile.dcc.citric.model.norma.{Norma, NormaStars}
+
 import scala.util.Random
 
 /** The `PlayerCharacter` class represents a character or avatar in the game, encapsulating
@@ -36,7 +37,7 @@ import scala.util.Random
   * @author [[https://github.com/joelriquelme/ Joel Riquelme P.]]
   * @author [[https://github.com/r8vnhill/ Ignacio Slater M.]]
   * @author [[https://github.com/Seivier/ Vicente González B.]]
-  * @author [[https://github.com/~Your github account~/ ~Your Name~]]
+  * @author [[https://github.com/AlePatata/ Alejandra Campos Urbina]]
   */
 class PlayerCharacter(val name: String,
               val maxHP: Int,
@@ -50,11 +51,13 @@ class PlayerCharacter(val name: String,
   protected var stars: Int = 1
   protected var attack: Int = Attack
   protected var defense: Int = Defense
-  protected var evasion: Int = Evasion
-  private var victories = 0
-  var norma = 1
-  var objective = new Stars(stars)
-
+  protected val evasion: Int = Evasion
+  private var victories: Int = 0
+  private val norma: Norma = ChooseObjective
+  private def ChooseObjective: Norma = {
+    val objective = new NormaStars
+    objective
+  }
 
   /** Rolls a dice and returns a value between 1 to 6. */
   def rollDice(): Int = {
@@ -74,10 +77,12 @@ class PlayerCharacter(val name: String,
     /*randomNumberGenerator.nextInt(n)*/
   }
 
+  /** NormaClear modifies the own norma of a player
+   *
+   * @param n is an integer that corresponds to the level up to modify
+   */
   def NormaClear(n: Int): Unit = {
-      norma = n
-      //if (n == 6)
-        //End()  No implemented method for finish a game
+      norma.setLevel(n)
   }
   def setVictories(increase: Int): Unit = {
     victories + increase
@@ -86,4 +91,11 @@ class PlayerCharacter(val name: String,
     val aux = victories
     aux
   }
+
+  def getNorma: Norma = {
+    val aux = norma
+    aux
+  }
+
+
 }

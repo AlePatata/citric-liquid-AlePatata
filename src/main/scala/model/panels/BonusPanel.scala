@@ -24,9 +24,9 @@ class BonusPanel(Characters: ArrayBuffer[PlayerCharacter],
    */
   def apply(player: PlayerCharacter): Unit = {
     val roll = player.rollDice()
-    var c = roll * player.norma
-    if (c > roll * 3) c = roll * 3
-    player.setStars(c)
+    var level = roll * player.getNorma.getLevel
+    if (level > roll * 3) level = roll * 3
+    player.setStars(level)
 
     addCharacter(player)
   }
