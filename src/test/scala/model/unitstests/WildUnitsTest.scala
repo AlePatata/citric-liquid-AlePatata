@@ -1,10 +1,7 @@
 package cl.uchile.dcc.citric
-package model
+package model.unitstests
 
-import cl.uchile.dcc.citric.model.units.{Chicken, RoboBall, Seagull, WildUnit}
-
-import scala.collection.mutable.ArrayBuffer
-import scala.util.Random
+import model.units.{Chicken, RoboBall, Seagull, WildUnit}
 
 class WildUnitsTest extends munit.FunSuite {
   var chicken: WildUnit = _

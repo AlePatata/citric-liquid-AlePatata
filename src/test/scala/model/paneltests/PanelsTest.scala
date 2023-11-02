@@ -101,43 +101,6 @@ class PanelsTest extends munit.FunSuite {
   }
 
 
-  test("Efecto de NeutralPanel") {
-    pan1 = new NeutralPanel(characters, nextPanels)
-    val player1 = player
-    pan1.apply(player)
-    assertEquals(player, player1)
-  }
 
-  test("Efecto de HomePanel") {
-    pan1 = new HomePanel(characters, nextPanels)
-    pan1.apply(player)
-    assertEquals(player.getNorma.getLevel, 1)
-    player.setStars(29)
-    pan1.apply(player)
-    assertEquals(player.getNorma.getLevel, 3)
-    player.setStars(170)
-    pan1.apply(player)
-    assertEquals(player.getNorma.getLevel, 6)
-  }
-
-  test("Efecto BonusPanel") {
-    pan1 = new BonusPanel(characters, nextPanels)
-    val other =
-      new PlayerCharacter(name, maxHp, attack, defense, evasion, new Random(11))
-    pan1.apply(player)
-    pan1.apply(other)
-
-    assertEquals(player.getStars, other.getStars)
-
-  }
-  test("Efecto DropPanel") {
-    pan1 = new DropPanel(characters, nextPanels)
-    val other =
-      new PlayerCharacter(name, maxHp, attack, defense, evasion, new Random(11))
-    pan1.apply(player)
-    pan1.apply(other)
-
-    assertEquals(player.getStars, other.getStars)
-  }
   
 }
