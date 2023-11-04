@@ -85,7 +85,7 @@ class PlayerCharacter(val name: String,
       norma.setLevel(n)
   }
   def setVictories(increase: Int): Unit = {
-    victories + increase
+    victories += increase
   }
   def getVictories: Int = {
     val aux = victories
@@ -96,6 +96,16 @@ class PlayerCharacter(val name: String,
     val aux = norma
     aux
   }
+  def loose: Int = {
+    val stars = this.getStars/2
+    this.setStars(-stars)
+    val Loose = stars
+    Loose
+  }
 
+  def win(wonStars: Int, Victories: Int): Unit = {
+    setStars(wonStars)
+    setVictories(Victories)
+  }
 
 }

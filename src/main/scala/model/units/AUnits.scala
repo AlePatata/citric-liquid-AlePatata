@@ -14,6 +14,7 @@ abstract class AUnits extends Units {
   }
   def setHP(increase: Int): Unit = {
     HP += increase
+    if(HP < 0) HP = 0   // HP shouldn't be negative
     assert(HP >= 0)
   }
   def getAttack: Int = {
@@ -45,4 +46,5 @@ abstract class AUnits extends Units {
     if (getHP == 0) true
     else false
   }
+  def loose: Int
 }

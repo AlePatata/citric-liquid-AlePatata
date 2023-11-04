@@ -6,38 +6,42 @@ import cl.uchile.dcc.citric.model.units.PlayerCharacter
 import scala.math
 
 class Combat(attacker: PlayerCharacter, attacked: PlayerCharacter) {
-  private val roll = attacker.rollDice()
-  private val AttackedHP = attacked.getHP
-  attacker.setAttack(roll)
 
-  /*decision*/
-  private val damage: Int = defend(attacker, attacked: PlayerCharacter)
-  /*private val damage: Int = evasion(attacker, attacked)*/
+  attack(attacker, attacked)
 
-  if (damage >= AttackedHP) {
-    attacked.setHP(-AttackedHP)
+  if (attacked.IsKO) {
+    val stars = attacked.loose
+    attacker.win(stars,2)
   } else {
-    attack(damage, attacked)
+    attack(attacked, attacker)
+    if (attacker.IsKO) {
+      val stars = attacker.loose
+      attacked.win(stars, 2)
+    }
   }
 
-  private def attack(damage: Int, attacked: PlayerCharacter): Unit = {
+  private def attack(attacker: PlayerCharacter, attacked: PlayerCharacter): Unit = {
+    val roll = attacker.rollDice()
+    attacker.setAttack(roll)
+    /*decision*/
+    val damage: Int = defend(attacker, attacked, roll)
+    /*val damage: Int = evade(attacker, attacked, roll)*/
     attacked.setHP(-damage)
   }
 
-  private def defend(attacker: PlayerCharacter, attacked: PlayerCharacter): Int = {
-    val rollDef = attacked.rollDice()
-    val damage = math.max(1, roll + attacker.getAttack - (rollDef + attacked.getDefense))
+  private def defend(attacker: PlayerCharacter, attacked: PlayerCharacter, attackerRoll: Int): Int = {
+    val attackedRoll = attacked.rollDice()
+    val damage = math.max(1, attackerRoll + attacker.getAttack - (attackedRoll + attacked.getDefense))
     damage
   }
 
-
-  private def evade(attacker: PlayerCharacter, attacked: PlayerCharacter): Unit = {
-    val rollEva = attacked.rollDice()
-    if (rollEva + attacked.getEva > roll + attacker.getAttack) {
-      val damage = 0
-    } else {
-      val damage = attacker.getAttack
+  private def evade(attacker: PlayerCharacter, attacked: PlayerCharacter, attackerRoll: Int): Int = {
+    val attackedRoll = attacked.rollDice()
+    var damage = 0
+    if (attackedRoll + attacked.getEva <= attackerRoll + attacker.getAttack) {
+      damage = attacker.getAttack
     }
+    damage
   }
 }
 

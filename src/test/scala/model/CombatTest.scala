@@ -48,4 +48,23 @@ class CombatTest extends munit.FunSuite {
     assertNotEquals(player.getAttack,attack)
     assertEquals(player.getAttack, player2.getAttack)
   }
+  test("Half of stars of the looser should transfer to the winner") {
+    val other =
+      new PlayerCharacter("otherPlayer", 1, attack, 0, evasion, new Random(11))
+    other.setStars(7)
+    val otherStars = other.getStars
+    val stars = player.getStars
+    new Combat(player, other)
+    assertEquals(player.getStars, stars + 4)
+    assertEquals(other.getStars, otherStars/2)
+  }
+  test("Winner should receive victories") {
+    val other =
+      new PlayerCharacter("otherPlayer", 1, attack, 0, evasion, new Random(11))
+    val otherVictories = other.getVictories
+    val victories = player.getVictories
+    new Combat(player, other)
+    assertEquals(player.getVictories, victories + 2)
+    assertEquals(other.getVictories, otherVictories)
+  }
 }

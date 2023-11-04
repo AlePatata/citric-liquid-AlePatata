@@ -82,7 +82,7 @@ class PanelEffectsTest extends munit.FunSuite {
       new PlayerCharacter(name, maxHp, attack, defense, evasion, new Random(11))
     pan1.apply(player)
     pan2.apply(other)
-
+    assertEquals(player.getVictories,other.getVictories)
     assertEquals(player.getStars, other.getStars)
   }
 }

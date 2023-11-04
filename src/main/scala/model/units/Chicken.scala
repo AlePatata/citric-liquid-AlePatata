@@ -6,7 +6,12 @@ class Chicken extends AUnits with WildUnit {
   protected var defense: Int = -1
   protected var stars: Int = 0
   protected val evasion: Int = 1
+  private val bonus = 3
 
-  def getBonus: Int = 3
-
+  def loose: Int = {
+    val stars = this.getStars
+    this.setStars(-stars)
+    val Loose = stars + bonus
+    Loose
+  }
 }

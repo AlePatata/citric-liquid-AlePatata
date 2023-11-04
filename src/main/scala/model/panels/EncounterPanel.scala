@@ -8,11 +8,12 @@ import scala.collection.mutable.ArrayBuffer
 
 
 class EncounterPanel(Characters: ArrayBuffer[PlayerCharacter],
-                     NextPanels: ArrayBuffer[Panel]) extends AbsPanel {
+                     NextPanels: ArrayBuffer[Panel],
+                     wildunit: WildUnit = new Chicken) extends AbsPanel {
 
   var characters: ArrayBuffer[PlayerCharacter] = Characters
   val nextPanels: ArrayBuffer[Panel] = NextPanels
-  private val wildUnit: WildUnit = new Chicken
+  private val wildUnit: WildUnit = wildunit
 
 
 

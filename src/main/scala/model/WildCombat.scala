@@ -5,45 +5,33 @@ import model.units.{PlayerCharacter, Units, WildUnit}
 
 
 class WildCombat(attacker: PlayerCharacter, attacked: WildUnit) {
-  val roll: Int = attacker.rollDice()
-  attacker.setAttack(roll)
-  private val damage: Int = defend(attacker, attacked)
-  attack(damage, attacked)
-  if(!attacked.IsKO) {
-    val damage = attacked.getAttack
-    attack(damage, attacker)
-    if(attacker.IsKO) {
-      bonus(attacked,attacker)
-    }
+  attack(attacker, attacked)
+  if(attacked.IsKO) {
+    val stars = attacked.loose
+    attacker.win(stars,1)
   } else {
-    bonus(attacker,attacked)
-  }
-
-  private def attack(damage: Int, attacked: Units): Unit = {
-    val AttackedHP = attacked.getHP
-    if (damage > AttackedHP) {
-      attacked.setHP(-AttackedHP)
-    } else {
-      attacked.setHP(-damage)
+    attack(attacked, attacker)
+    if (attacker.IsKO) {
+      val stars = attacker.loose
+      attacked.setStars(stars)
     }
   }
 
-  private def defend(attacker: PlayerCharacter, attacked: WildUnit): Int = {
+  private def attack(attacker: PlayerCharacter, attacked: WildUnit): Unit = {
+    val roll: Int = attacker.rollDice()
+    attacker.setAttack(roll)
+    val damage: Int = defend(attacker, attacked, roll)
+    attacked.setHP(-damage)
+  }
+
+  private def attack(attacker: WildUnit, attacked: PlayerCharacter): Unit = {
+    val damage: Int = defend(attacker, attacked)
+    attacked.setHP(-damage)
+  }
+
+  private def defend(attacker: Units, attacked: Units, roll: Int = 0): Int = {
     val damage = math.max(1, roll + attacker.getAttack - attacked.getDefense)
     damage
-  }
-
-  private def bonus(Winner: PlayerCharacter, Looser: WildUnit): Unit = {
-  val stars = Looser.getStars
-  Winner.setStars(stars + Looser.getBonus)
-  Looser.setStars(-stars)
-  Winner.setVictories(1)
-  }
-
-  private def bonus(Winner: WildUnit, Looser: PlayerCharacter): Unit = {
-    val stars = Looser.getStars / 2
-    Winner.setStars(stars)
-    Looser.setStars(-stars)
   }
 }
 
