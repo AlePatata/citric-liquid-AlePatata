@@ -5,16 +5,16 @@ import cl.uchile.dcc.citric.model.units.PlayerCharacter
 
 import scala.collection.mutable.ArrayBuffer
 
-/**
+/** BonusPanel is a type of Panel which gives a certain bonus
  *
- * @param Characters
- * @param NextPanels
+ * @param Characters the own list of player characters in the panel
+ * @param NextPanels the own list of panels which are connected with the actual panel
  */
 class BonusPanel(Characters: ArrayBuffer[PlayerCharacter],
                  NextPanels: ArrayBuffer[Panel]) extends AbsPanel {
 
-  override var characters: ArrayBuffer[PlayerCharacter] = Characters
-  override val nextPanels: ArrayBuffer[Panel] = NextPanels
+  val characters: ArrayBuffer[PlayerCharacter] = Characters
+  val nextPanels: ArrayBuffer[Panel] = NextPanels
 
 
   /** apply gives some stars to the Character

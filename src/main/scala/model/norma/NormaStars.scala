@@ -2,7 +2,14 @@ package cl.uchile.dcc.citric
 package model.norma
 import model.units.PlayerCharacter
 
+/** NormaStars is type of Norma
+ *
+ *  This class has as objective the stars goal
+ */
+
 class NormaStars extends AbsNorma {
+  /** The map in where the achievements are saved
+   */
   protected val achieves: Map[Int, Int] = Map(1 -> 0, 2 -> 10, 3 -> 30, 4 -> 70, 5 -> 120, 6 -> 200, 7 -> 9999999)
 
   /** NormaCheck is a method that checks whether or not
@@ -19,7 +26,8 @@ class NormaStars extends AbsNorma {
     val level: Int = norma.getLevel
     val stars: Int = player.getStars
     var needed: Int = achieves(level)
-
+    // If the player's stars are more than the expected for his/her actual norma, we check if he/she achieves
+    // the requirements for actualize his/her norma
     if (needed <= stars) {
       var n = level
       while (needed <= stars) {

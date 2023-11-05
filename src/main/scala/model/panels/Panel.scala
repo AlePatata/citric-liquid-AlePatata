@@ -14,18 +14,15 @@ import scala.collection.mutable.ArrayBuffer
   * structures.
   *
   * @author [[https://github.com/r8vnhill Ignacio Slater M.]]
-  * @author [[https://github.com/YOUR-USERNAME YOUR NAME]]
+  * @author [[https://github.com/AlePatata/ Alejandra Campos Urbina]]
   */
 trait Panel {
-
-
-
   /** Array of the characters currently positioned on this panel.
    *
    * In the game, multiple characters might be on the same panel at once, e.g., if multiple players
    * land on the same space.
    */
-  var characters: ArrayBuffer[PlayerCharacter]
+  val characters: ArrayBuffer[PlayerCharacter]
 
   /** An array of panels that are directly connected to this one.
    *
@@ -52,8 +49,21 @@ trait Panel {
    */
   def removeCharacter(player: PlayerCharacter): Unit
 
-  def addPanel(pan2: Panel): Unit
-  def removePanel(pan2: Panel): Unit
+  /** Adds a panel to the list of nextPanels currently on this panel.
+   *
+   * This might be invoked when the controller begins the game.
+   *
+   * @param panel The new panel to add to this panel.
+   */
+  def addPanel(panel: Panel): Unit
+
+  /** Removes a panel of the list of nextPanels of this panel.
+   *
+   * This might be invoked when the controller begins the game.
+   *
+   * @param panel The panel to remove of this panel.
+   */
+  def removePanel(panel: Panel): Unit
 
   /** For each type of panel the function will affect the player in a different way.
    *

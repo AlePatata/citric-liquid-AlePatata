@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model.paneltests
+package model.panels
 
 import model.panels.{BonusPanel, DropPanel, HomePanel, NeutralPanel, Panel}
 import model.units.PlayerCharacter

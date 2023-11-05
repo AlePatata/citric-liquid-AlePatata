@@ -1,8 +1,7 @@
 package cl.uchile.dcc.citric
-package model
+package model.norma
 
-import cl.uchile.dcc.citric.model.norma.AbsNorma
-import cl.uchile.dcc.citric.model.units.PlayerCharacter
+import model.units.PlayerCharacter
 
 import scala.util.Random
 

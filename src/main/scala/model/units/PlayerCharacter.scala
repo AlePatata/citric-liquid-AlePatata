@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.units
 
-import cl.uchile.dcc.citric.model.norma.{Norma, NormaStars}
+import cl.uchile.dcc.citric.model.norma.{Norma, NormaStars, NormaVictories}
 
 import scala.util.Random
 
@@ -27,9 +27,9 @@ import scala.util.Random
   *
   * @param name The name of the player. This is an identifier and should be unique.
   * @param maxHP The maximum health points a player can have. It represents the player's endurance.
-  * @param attack The player's capability to deal damage to opponents.
-  * @param defense The player's capability to resist or mitigate damage from opponents.
-  * @param evasion The player's skill to completely avoid certain attacks.
+  * @param Attack The player's capability to deal damage to opponents.
+  * @param Defense The player's capability to resist or mitigate damage from opponents.
+  * @param Evasion The player's skill to completely avoid certain attacks.
   * @param randomNumberGenerator A utility to generate random numbers. Defaults to a new `Random`
   *                              instance.
   *
@@ -53,10 +53,16 @@ class PlayerCharacter(val name: String,
   protected var defense: Int = Defense
   protected val evasion: Int = Evasion
   private var victories: Int = 0
-  private val norma: Norma = ChooseObjective
-  private def ChooseObjective: Norma = {
-    val objective = new NormaStars
+  private var norma: Norma = ChooseObjective()
+  def ChooseObjective(obj: String = "stars"): Norma = {
+    var objective: Norma = new NormaStars
+    if(obj == "victories"){
+      objective = new NormaVictories
+    }
     objective
+  }
+  def setNorma(n: Norma): Unit = {
+    norma = n
   }
 
   /** Rolls a dice and returns a value between 1 to 6. */
@@ -72,7 +78,7 @@ class PlayerCharacter(val name: String,
    * @param n Is the amount of option which the player has to pick
    * @return The first option: the integer 0
    */
-  def choose(n: Int): Int = {
+  override def choose(n: Int): Int = {
     0
     /*randomNumberGenerator.nextInt(n)*/
   }
@@ -84,18 +90,25 @@ class PlayerCharacter(val name: String,
   def NormaClear(n: Int): Unit = {
       norma.setLevel(n)
   }
+  /** Setter of victories */
   def setVictories(increase: Int): Unit = {
     victories += increase
   }
+  /** Getter of victories */
   def getVictories: Int = {
     val aux = victories
     aux
   }
-
+  /** Getter of norma */
   def getNorma: Norma = {
     val aux = norma
     aux
   }
+
+  /** In a combat this function modified the stars that the player loose
+   *
+   * @return The amount of stars that loosed
+   */
   def loose: Int = {
     val stars = this.getStars/2
     this.setStars(-stars)
@@ -103,6 +116,9 @@ class PlayerCharacter(val name: String,
     Loose
   }
 
+  /** In a combat this function modified the victories that the player win
+   *
+   */
   def win(wonStars: Int, Victories: Int): Unit = {
     setStars(wonStars)
     setVictories(Victories)

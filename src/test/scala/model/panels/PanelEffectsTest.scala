@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model.paneltests
+package model.panels
 
 import model.panels.{BonusPanel, DropPanel, EncounterPanel, HomePanel, NeutralPanel, Panel}
 import model.units.PlayerCharacter
@@ -54,6 +54,15 @@ class PanelEffectsTest extends munit.FunSuite {
     player.setStars(170)
     pan1.apply(player)
     assertEquals(player.getNorma.getLevel, 6)
+  }
+  test("Efecto de HomePanel con objetivo de Victorias") {
+    player.setNorma(player.ChooseObjective("victories"))
+    pan1 = new HomePanel(characters, nextPanels)
+    pan1.apply(player)
+    assertEquals(player.getNorma.getLevel, 1)
+    player.setVictories(6)
+    pan1.apply(player)
+    assertEquals(player.getNorma.getLevel, 4)
   }
 
   test("Efecto BonusPanel") {

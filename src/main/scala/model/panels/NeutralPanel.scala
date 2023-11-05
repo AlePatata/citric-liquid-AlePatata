@@ -11,7 +11,7 @@ import scala.collection.mutable.ArrayBuffer
 class NeutralPanel(Characters: ArrayBuffer[PlayerCharacter],
                    NextPanels: ArrayBuffer[Panel]) extends AbsPanel{
 
-  var characters: ArrayBuffer[PlayerCharacter] = Characters
+  val characters: ArrayBuffer[PlayerCharacter] = Characters
   val nextPanels: ArrayBuffer[Panel] = NextPanels
 
   /** apply just actualize the position of the player

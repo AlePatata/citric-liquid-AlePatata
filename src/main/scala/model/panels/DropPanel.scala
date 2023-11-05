@@ -10,18 +10,18 @@ import scala.collection.mutable.ArrayBuffer
  * When a Player Character falls here he/she will lose a certain
  * amount of stars
  *
- * @param Characters For create
- * @param NextPanels
+ * @param Characters the own list of player characters in the panel
+ * @param NextPanels the own list of panels which are connected with the actual panel
  */
 
 class DropPanel(Characters: ArrayBuffer[PlayerCharacter],
                 NextPanels: ArrayBuffer[Panel]) extends AbsPanel {
 
-  var characters: ArrayBuffer[PlayerCharacter] = Characters
+  val characters: ArrayBuffer[PlayerCharacter] = Characters
   val nextPanels: ArrayBuffer[Panel] = NextPanels
 
   /** apply stills some stars to the Character
-   * and actualizate the position of the player
+   * and actualize the position of the player
    *
    * @param player The Player Character affected
    */

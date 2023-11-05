@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model.unitstests
+package model.units
 
 import model.units.{Chicken, RoboBall, Seagull, WildUnit}
 

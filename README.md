@@ -8,15 +8,14 @@ español, esto último por comodidad. A continuación enumero ciertos puntos a r
 implementación:
 
 - Cuando finaliza un combate no se reestablece el ataque del jugador que inicia el encuentro
-- Los setters modifican el respectivo valor segun su valor previo más un cierto incremento que recibe como argumento, 
+- Los setters modifican el respectivo valor según su valor previo más un cierto incremento que recibe como argumento, 
 no lo sustituye directamente
 - Se utiliza una privacidad de `protected` en ciertas clases abstractas ya que utilizar `private` no es posible
 - Combate en 2 jugadores no se separa en dos clases segun la decision del atacado para seguir el orden lógico
 de un combate descrito en el enunciado
-- 
+- Se hizo un esbozo de función para seleccionar una opción entre n opciones, para simular las desiciones
+del jugador y las elecciones aleatorias de los wild units
 
-Elementos aún no correctamente desarrollados:
-- 
 
 ## About
 
