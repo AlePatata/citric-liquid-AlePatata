@@ -15,6 +15,9 @@ no lo sustituye directamente
 de un combate descrito en el enunciado
 - Se hizo un esbozo de función para seleccionar una opción entre n opciones, para simular las desiciones
 del jugador y las elecciones aleatorias de los wild units
+- Para que un jugador pueda elegir un objetivo de norma se utilizó un método provisorio que toma por parametro
+un string, que aunque no es un buen modelo, sirve para poder testear ambas clases norma segun objetivo
+
 
 
 ## About

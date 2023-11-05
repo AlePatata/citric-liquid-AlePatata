@@ -54,6 +54,12 @@ class PlayerCharacter(val name: String,
   protected val evasion: Int = Evasion
   private var victories: Int = 0
   private var norma: Norma = ChooseObjective()
+
+  /** This is a provisional method that choose an objective for the player
+   *
+   * @param obj string that indicates the objective of the player in his/her turn
+   * @return the norma depending on the type
+   */
   def ChooseObjective(obj: String = "stars"): Norma = {
     var objective: Norma = new NormaStars
     if(obj == "victories"){
@@ -61,6 +67,7 @@ class PlayerCharacter(val name: String,
     }
     objective
   }
+  /** Setter of the player's Norma and his/her possible objective */
   def setNorma(n: Norma): Unit = {
     norma = n
   }
