@@ -1,7 +1,7 @@
 package cl.uchile.dcc.citric
 package model.units
 
-import model.units.{Chicken, RoboBall, Seagull, WildUnit}
+import cl.uchile.dcc.citric.model.units.wildunits.{Chicken, RoboBall, Seagull, WildUnit}
 
 class WildUnitsTest extends munit.FunSuite {
   var chicken: WildUnit = _

@@ -1,8 +1,10 @@
 package cl.uchile.dcc.citric
 package model.units
 
+import cl.uchile.dcc.citric.controller.Observer
 import cl.uchile.dcc.citric.model.norma.{Norma, NormaStars, NormaVictories}
 
+import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 
 /** The `PlayerCharacter` class represents a character or avatar in the game, encapsulating
@@ -54,6 +56,7 @@ class PlayerCharacter(val name: String,
   protected val evasion: Int = Evasion
   private var victories: Int = 0
   private var norma: Norma = ChooseObjective()
+  val observers = ArrayBuffer[Observer]()
 
   /** This is a provisional method that choose an objective for the player
    *
@@ -95,7 +98,8 @@ class PlayerCharacter(val name: String,
    * @param n is an integer that corresponds to the level up to modify
    */
   def NormaClear(n: Int): Unit = {
-      norma.setLevel(n)
+    norma.setLevel(n)
+    if (norma.getLevel >= norma.maxlevel) notifyObservers()
   }
   /** Setter of victories */
   def setVictories(increase: Int): Unit = {
@@ -129,6 +133,12 @@ class PlayerCharacter(val name: String,
   def win(wonStars: Int, Victories: Int): Unit = {
     setStars(wonStars)
     setVictories(Victories)
+  }
+
+  def notifyObservers(): Unit = {
+    for (o <- observers) {
+      o.update()
+    }
   }
 
 }

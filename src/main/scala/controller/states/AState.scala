@@ -1,10 +1,12 @@
 package cl.uchile.dcc.citric
-package model.controller
+package controller.states
+
+import cl.uchile.dcc.citric.controller.GameController
 
 abstract class AState extends State {
   var controller: GameController = _
 
-  def newChapter(): Unit = {}
+
 
   //def isStart(t: T): Boolean = false
 

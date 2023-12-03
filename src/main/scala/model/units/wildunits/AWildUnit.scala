@@ -1,5 +1,7 @@
 package cl.uchile.dcc.citric
-package model.units
+package model.units.wildunits
+
+import model.units.AUnits
 
 abstract class AWildUnit extends AUnits with WildUnit {
   def respawn(): Unit = {

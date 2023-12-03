@@ -1,8 +1,9 @@
 package cl.uchile.dcc.citric
 package model.panels
 
-import model.units.{Chicken, PlayerCharacter, WildUnit}
+import model.units.PlayerCharacter
 import cl.uchile.dcc.citric.model.combat.WildCombat
+import cl.uchile.dcc.citric.model.units.wildunits.{Chicken, WildUnit}
 
 import scala.collection.mutable.ArrayBuffer
 

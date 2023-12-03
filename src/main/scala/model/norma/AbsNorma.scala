@@ -1,6 +1,10 @@
 package cl.uchile.dcc.citric
 package model.norma
 
+import cl.uchile.dcc.citric.controller.Observer
+
+import scala.collection.mutable.ArrayBuffer
+
 
 /** AbsNorma represents the level of a player in the game
  *
@@ -10,6 +14,8 @@ package model.norma
  * @author [[https://github.com/AlePatata/ Alejandra Campos Urbina]]
  */
 abstract class AbsNorma extends Norma {
+  val maxlevel = 6
+
   /** The norma level respect to a player
    *
    * This variable keeps track of the player's norma, and for its delicate value in the game it's protected
@@ -31,5 +37,8 @@ abstract class AbsNorma extends Norma {
    */
   def setLevel(Level: Int): Unit = {
     level = Level
+
   }
+
+
 }

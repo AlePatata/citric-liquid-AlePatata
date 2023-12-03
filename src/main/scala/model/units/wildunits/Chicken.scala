@@ -1,4 +1,5 @@
-package cl.uchile.dcc.citric.model.units
+package cl.uchile.dcc.citric
+package model.units.wildunits
 
 /** Kind of bellaco
  *

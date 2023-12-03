@@ -1,5 +1,7 @@
 package cl.uchile.dcc.citric
-package model.units
+package model.units.wildunits
+
+import model.units.Units
 
 /** A Wild Unit is a kind of unit the represents an enemy in the game
  *

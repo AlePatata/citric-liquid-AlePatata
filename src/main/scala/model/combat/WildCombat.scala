@@ -1,7 +1,8 @@
 package cl.uchile.dcc.citric
 package model.combat
 
-import model.units.{PlayerCharacter, Units, WildUnit}
+import model.units.{PlayerCharacter, Units}
+import cl.uchile.dcc.citric.model.units.wildunits.WildUnit
 
 /** A wild combat is an event in which a player character and a wild unit face a duel
  *
@@ -21,7 +22,7 @@ class WildCombat(attacker: PlayerCharacter, attacked: WildUnit) {
     }
   }
 
-  /** The attack performs the following sequence of instructions::
+  /** The attack performs the following sequence of instructions:
    * modifies the attacker's attack using his/her dice
    * ask for the decision of the attacked to defend or evaded him/herself
    * -applies the resulting damage

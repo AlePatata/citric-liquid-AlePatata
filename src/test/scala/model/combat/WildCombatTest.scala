@@ -1,7 +1,8 @@
 package cl.uchile.dcc.citric
 package model.combat
 
-import model.units.{Chicken,RoboBall,Seagull, PlayerCharacter}
+import model.units.PlayerCharacter
+import cl.uchile.dcc.citric.model.units.wildunits.{Chicken, RoboBall, Seagull}
 
 import scala.util.Random
 

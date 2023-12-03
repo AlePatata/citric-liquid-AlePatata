@@ -1,11 +1,14 @@
 package cl.uchile.dcc.citric
-package model.controller
+package controller.states
 
 import model.units.PlayerCharacter
 
-object ChapterState extends AState {
-  var chapter: Int = 1
-  override def newChapter() : Unit = {
+class ChapterState(var chapter: Int) extends AState {
+  val maxchapter = 4
+  if (chapter >= maxchapter) {
+    controller.endGame()
+  }
+  def newChapter() : Unit = {
     chapter += 1
   }
   def normaSixReached(): Unit = {

@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model.controller
+package controller.states
 
 class Recovery extends AState {
 

@@ -1,5 +1,5 @@
 package cl.uchile.dcc.citric
-package model.units
+package model.units.wildunits
 
 /** Kind of bellaco
  *
