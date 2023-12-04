@@ -6,29 +6,42 @@ import cl.uchile.dcc.citric.model.panels.Panel
 import cl.uchile.dcc.citric.model.units.PlayerCharacter
 
 import scala.collection.mutable.ArrayBuffer
+import scala.collection.mutable.Map
 
 class GameController {
   private var state: State = _
-  private var characters: ArrayBuffer[PlayerCharacter] = _
-  private val observer: Observer = new Observer
-  observer.controller = this
+  private val characters = ArrayBuffer[PlayerCharacter]()
+  private val observers = ArrayBuffer[Observer]()
+  var turns = Map[Int, PlayerCharacter]()
+  val tablero = new Tablero
 
-  private val chapter: Option[ChapterState] = None
+  private var chapter = 1
+  val maxChapter = 5
   private var currentPlayer: Option[PlayerCharacter] = None
   private var currentPanel: Option[Panel] = None
 
-  val s: State = new PreGame
-  changeState(s)
-  s.controller = this
+  var finish = true
 
+  def startGame(): Unit = {
+    changeState(new PreGame(this))
+    finish = false
+  }
 
+  def startRounds(): Unit = {
+    while (!finish) {
+      changeState(new ChapterState(chapter, this))
+      chapter += 1
+    }
+    chapter -= 1
+  }
   def changeState(s: State): Unit = {
     state = s
   }
 
   def endGame(): Unit = {
-    changeState(new EndGame)
-    println("End Game\n")
+    changeState(new EndGame(this))
+    println("Game Over\n")
+    finish = true
   }
   def getCurrentPlayer(): PlayerCharacter = {
     if (currentPlayer.isDefined) {
@@ -48,15 +61,26 @@ class GameController {
     }
   }
   def setCurrentPanel(panel: Panel): Unit = {
+    if (currentPanel.isEmpty && currentPlayer.isDefined) {
+      panel.setOwner(currentPlayer.get)
+    }
     currentPanel = Some(panel)
   }
-  def getChapter(): ChapterState = {
-    if (chapter.isDefined) {
-      chapter.get
-    } else {
-      throw new AssertionError("There is no current chapter defined")
-    }
+  def getChapter(): Int = {
+    val c = chapter
+    c
+  }
+  def addPlayer(player: PlayerCharacter) = {
+    characters += player
   }
 
+  def addObserver(o: Observer): Unit = {
+    observers += o
+    for (o <- observers) o.setController(this)
+  }
+  def getPlayers(): ArrayBuffer[PlayerCharacter] = {
+    val c = characters
+    c
+  }
 
 }

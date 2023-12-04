@@ -3,11 +3,10 @@ package controller.states
 
 import cl.uchile.dcc.citric.controller.GameController
 
-abstract class AState extends State {
-  var controller: GameController = _
+abstract class AState(c: GameController) extends State {
+  var controller: GameController = c
 
-
-
-  //def isStart(t: T): Boolean = false
-
+  def setController(c: GameController) = {
+    controller = c
+  }
 }

@@ -1,14 +1,16 @@
 package cl.uchile.dcc.citric
 package controller.states
 
-class Moving(var roll: Int) extends AState {
+import controller.GameController
+
+class Moving(var roll: Int,c: GameController) extends AState(c: GameController) {
   val player = controller.getCurrentPlayer()
   var panel = controller.getCurrentPanel()
   def StopMovement(): Unit = {
     roll = 0
   }
   private def outOfMovements(): Unit = {
-    val s: State = new CombatState
+    val s: State = new CombatState(controller)
     controller.changeState(s)
     s.controller = controller
 

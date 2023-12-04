@@ -70,4 +70,6 @@ trait Panel {
    * @param player The player character to affect.
    */
   def apply(player: PlayerCharacter): Unit
+
+  def setOwner(player: PlayerCharacter): Unit
 }

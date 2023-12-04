@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
 package controller.states
 
-class EndGame extends AState {
+import controller.GameController
+
+class EndGame(c: GameController) extends AState(c: GameController) {
 
 }

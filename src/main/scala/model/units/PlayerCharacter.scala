@@ -56,7 +56,7 @@ class PlayerCharacter(val name: String,
   protected val evasion: Int = Evasion
   private var victories: Int = 0
   private var norma: Norma = ChooseObjective()
-  val observers = ArrayBuffer[Observer]()
+  val observers = ArrayBuffer[Observer](new Observer)
 
   /** This is a provisional method that choose an objective for the player
    *
@@ -140,5 +140,4 @@ class PlayerCharacter(val name: String,
       o.update()
     }
   }
-
 }

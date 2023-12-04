@@ -51,9 +51,9 @@ class PanelEffectsTest extends munit.FunSuite {
     player.setStars(29)
     pan1.apply(player)
     assertEquals(player.getNorma.getLevel, 3)
-    player.setStars(170)
+    player.setStars(120)
     pan1.apply(player)
-    assertEquals(player.getNorma.getLevel, 6)
+    assertEquals(player.getNorma.getLevel, 5)
   }
   test("Efecto de HomePanel con objetivo de Victorias") {
     player.setNorma(player.ChooseObjective("victories"))

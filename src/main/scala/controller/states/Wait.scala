@@ -1,6 +1,8 @@
 package cl.uchile.dcc.citric
 package controller.states
 
-class Wait extends AState {
+import controller.GameController
+
+class Wait(c: GameController) extends AState(c: GameController) {
 
 }

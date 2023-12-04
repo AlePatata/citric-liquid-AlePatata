@@ -5,9 +5,12 @@ import controller.GameController
 
 
 class ControllerTest extends munit.FunSuite{
-  test("Controller should start a game") {
-    val control = new GameController
-    control.startGame()
-    //testear output?
+  val controller = new GameController
+  test("Controller should start and finish a game") {
+    assert(controller.finish)
+    controller.startGame()
+    assert(!controller.finish)
+    controller.endGame()
+    assert(controller.finish)
   }
 }

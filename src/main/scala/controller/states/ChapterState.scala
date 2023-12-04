@@ -3,35 +3,42 @@ package controller.states
 
 import model.units.PlayerCharacter
 
-class ChapterState(var chapter: Int) extends AState {
-  val maxchapter = 4
-  if (chapter >= maxchapter) {
+import cl.uchile.dcc.citric.controller.GameController
+import cl.uchile.dcc.citric.model.panels.Panel
+
+class ChapterState(var chapter: Int, c: GameController) extends AState(c: GameController) {
+  private val maxChapter = controller.maxChapter
+  val mapa: List[Panel] = controller.tablero.mapa
+
+  if (chapter >= maxChapter) {
     controller.endGame()
   }
-  def newChapter() : Unit = {
-    chapter += 1
-  }
-  def normaSixReached(): Unit = {
-    val s: State = new EndGame
-    controller.changeState(s)
-    s.controller = controller
-
-    println("End Game\n")
+  for ((t,p: PlayerCharacter) <- controller.turns) {
+    giveStars(p)
+    controller.setCurrentPlayer(p)
+    controller.setCurrentPanel(mapa(t))
+    if (p.IsKO) {
+      isKO(p)
+    } else playTurn(p)
   }
 
-  def isKO(playerCharacter: PlayerCharacter): Unit = {
-    val s: State = new Recovery
+
+  def isKO(player: PlayerCharacter): Unit = {
+    val s: State = new Recovery(controller)
     controller.changeState(s)
     s.controller = controller
 
     println("Recovery State\n")
   }
 
-  def playTurn(character: PlayerCharacter): Unit = {
-    val s: State = new PlayerTurn(character)
-    controller.changeState(s)
-    s.controller = controller
+  def playTurn(player: PlayerCharacter): Unit = {
+    controller.changeState(new PlayerTurn(player,controller))
 
-    println("Player Turn\n")
+    println(s"${player.name}'s Turn\n")
   }
+
+  def giveStars(player: PlayerCharacter): Unit = {
+    player.setStars( 1 + controller.getChapter()/5 )
+  }
+
 }
