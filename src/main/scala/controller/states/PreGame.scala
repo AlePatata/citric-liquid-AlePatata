@@ -23,13 +23,22 @@ class PreGame(c: GameController) extends AState(c: GameController) {
 
   val players = controller.getPlayers()
   controller.turns = Turns(players)
-  if(players.nonEmpty) ObserversConfig()
+  if(players.nonEmpty) {
+    ObserversConfig()
+    CurrentPanelsConfig()
+  }
   def ObserversConfig(): Unit = {
     for (p <- players) {
       for (o <- p.observers) {
         o.setController(controller)
         controller.addObserver(o)
       }
+    }
+  }
+  def CurrentPanelsConfig(): Unit = {
+    val panels = controller.getCurrentPanels()
+    for (p <- players) {
+      panels += (p -> None)
     }
   }
 }

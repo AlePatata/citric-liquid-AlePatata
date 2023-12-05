@@ -13,12 +13,13 @@ class GameController {
   private val characters = ArrayBuffer[PlayerCharacter]()
   private val observers = ArrayBuffer[Observer]()
   var turns = Map[Int, PlayerCharacter]()
-  val tablero = new Tablero
+  var tablero = new Tablero
 
   private var chapter = 1
   val maxChapter = 5
   private var currentPlayer: Option[PlayerCharacter] = None
-  private var currentPanel: Option[Panel] = None
+  private var currentPanels = Map[PlayerCharacter, Option[Panel]]()
+
 
   var finish = true
 
@@ -53,7 +54,11 @@ class GameController {
   def setCurrentPlayer(player: PlayerCharacter): Unit = {
     currentPlayer = Some(player)
   }
-  def getCurrentPanel(): Panel = {
+  def getCurrentPanels(): Map[PlayerCharacter,Option[Panel]] = {
+    currentPanels
+  }
+  def getCurrentPanel(player: PlayerCharacter): Panel = {
+    val currentPanel: Option[Panel] = currentPanels(player)
     if (currentPanel.isDefined) {
       currentPanel.get
     } else {
@@ -61,10 +66,11 @@ class GameController {
     }
   }
   def setCurrentPanel(panel: Panel): Unit = {
-    if (currentPanel.isEmpty && currentPlayer.isDefined) {
-      panel.setOwner(currentPlayer.get)
-    }
-    currentPanel = Some(panel)
+    val panelDeJugador = currentPanels(currentPlayer.get)
+    if (panelDeJugador.isEmpty) { // If there isn't a current panel for the player
+      currentPlayer.get.home = Some(panel)
+      currentPanels(currentPlayer.get) = Some(panel)
+    } else currentPanels(currentPlayer.get) = Some(panel)
   }
   def getChapter(): Int = {
     val c = chapter

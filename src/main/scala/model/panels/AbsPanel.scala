@@ -58,7 +58,7 @@ abstract class AbsPanel extends Panel {
     characters -= player
   }
 
-  def setOwner(player: PlayerCharacter): Unit = {}
+
 
   /*def getNextPanels: ArrayBuffer[Panel] = {
     val aux = nextPanels

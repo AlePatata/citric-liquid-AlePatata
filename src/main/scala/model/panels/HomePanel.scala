@@ -15,7 +15,6 @@ class HomePanel(Characters: ArrayBuffer[PlayerCharacter],
 
   val characters: ArrayBuffer[PlayerCharacter] = Characters
   val nextPanels: ArrayBuffer[Panel] = NextPanels
-  var owner: PlayerCharacter = _
 
   /** apply do the NormaCheck and actualize the position of the player
    *
@@ -26,7 +25,5 @@ class HomePanel(Characters: ArrayBuffer[PlayerCharacter],
     player.getNorma.NormaCheck(player)
     addCharacter(player)
   }
-  override def setOwner(player: PlayerCharacter): Unit = {
-    owner = player
-  }
+
 }

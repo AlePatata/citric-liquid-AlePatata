@@ -12,28 +12,28 @@ class Tablero {
   centro.nextPanels += home3
   centro.nextPanels += home4
 
-  private val home1 = new HomePanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
+  val home1 = new HomePanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
     new NeutralPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
       new EncounterPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
         new DropPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](centro))
       ))
     ))
   ))
-  private val home2 = new HomePanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
+  val home2 = new HomePanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
     new EncounterPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
       new NeutralPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
         new DropPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](centro))
       ))
     ))
   ))
-  private val home3 = new HomePanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
+  val home3 = new HomePanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
     new NeutralPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
       new NeutralPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
         new DropPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](home1))
       ))
     ))
   ))
-  private val home4 = new HomePanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
+  val home4 = new HomePanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
     new EncounterPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
       new EncounterPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](
         new DropPanel(ArrayBuffer[PlayerCharacter](), ArrayBuffer[Panel](home2))

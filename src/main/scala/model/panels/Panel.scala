@@ -71,5 +71,5 @@ trait Panel {
    */
   def apply(player: PlayerCharacter): Unit
 
-  def setOwner(player: PlayerCharacter): Unit
+
 }

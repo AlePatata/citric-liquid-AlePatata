@@ -24,11 +24,11 @@ class ChapterState(var chapter: Int, c: GameController) extends AState(c: GameCo
 
 
   def isKO(player: PlayerCharacter): Unit = {
-    val s: State = new Recovery(controller)
+    val s: State = new Recovery(player,controller)
     controller.changeState(s)
     s.controller = controller
 
-    println("Recovery State\n")
+    println(s"${player.name} has entered in a Recovery State\n")
   }
 
   def playTurn(player: PlayerCharacter): Unit = {

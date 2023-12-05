@@ -7,17 +7,18 @@ las decisiones tomadas para la implementación de ciertos aspectos, escribo este
 español, esto último por comodidad. A continuación enumero ciertos puntos a recalcar en mi 
 implementación:
 
-- Cuando finaliza un combate no se reestablece el ataque del jugador que inicia el encuentro
-- Los setters modifican el respectivo valor según su valor previo más un cierto incremento que recibe como argumento, 
-no lo sustituye directamente
-- Se utiliza una privacidad de `protected` en ciertas clases abstractas ya que utilizar `private` no es posible
-- Combate en 2 jugadores no se separa en dos clases segun la decision del atacado para seguir el orden lógico
-de un combate descrito en el enunciado
-- Se hizo un esbozo de función para seleccionar una opción entre n opciones, para simular las desiciones
-del jugador y las elecciones aleatorias de los wild units
-- Para que un jugador pueda elegir un objetivo de norma se utilizó un método provisorio que toma por parametro
-un string, que aunque no es un buen modelo, sirve para poder testear ambas clases norma segun objetivo
-
+- startGame() en GameController transisiona al state PreGame, donde se arman los turnos (en un Map) y 
+configuran los observers
+- Los observers tienen como subject a los jugadores y notifican al controlador si se alcanza el nivel
+necesario para terminar el juego definido en el mismo controlador
+- startRounds() en GameController inicia el loop para las rondas de turnos
+- Definí chapter como un atributo en controlador para poder acceder facilmente a él en varias funciones de los states
+- Asumí que un jugador noqueado igualmente recibe estrellas al iniciar un chapter nuevo 
+- Creé una clase tablero que controlador usa como tablero predeterminado y tiene la particularidad de ser
+un tablero en donde para cada panel su lista de paneles siguientes tiene uno o dos elementos,
+por lo que genera un loop infinito
+- Decidí definir por defecto que si un jugador se topaba con otro en el mismo panel siempre se iniciara un combate
+- Por la implementación que utilicé en Combat, prescindí del state Wait
 
 
 ## About

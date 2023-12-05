@@ -3,6 +3,7 @@ package model.units
 
 import cl.uchile.dcc.citric.controller.Observer
 import cl.uchile.dcc.citric.model.norma.{Norma, NormaStars, NormaVictories}
+import cl.uchile.dcc.citric.model.panels.Panel
 
 import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
@@ -57,6 +58,7 @@ class PlayerCharacter(val name: String,
   private var victories: Int = 0
   private var norma: Norma = ChooseObjective()
   val observers = ArrayBuffer[Observer](new Observer)
+  var home: Option[Panel] = None
 
   /** This is a provisional method that choose an objective for the player
    *

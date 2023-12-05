@@ -2,6 +2,10 @@ package cl.uchile.dcc.citric
 package controller
 
 import model.units.PlayerCharacter
+
+import cl.uchile.dcc.citric.controller.states.ChapterState
+
+import java.io.ByteArrayOutputStream
 import scala.util.Random
 
 class StatesTest extends munit.FunSuite {
@@ -44,5 +48,13 @@ class StatesTest extends munit.FunSuite {
     controller.startGame()
     controller.startRounds()
     assertEquals(controller.getChapter(),controller.maxChapter)
+  }
+
+  test("A KO player should be in Recovery state when is their turn") {
+    player.setHP(-maxHp)
+    controller.addPlayer(player)
+    controller.startGame()
+    controller.changeState(new ChapterState(controller.getChapter(), controller))
+
   }
 }

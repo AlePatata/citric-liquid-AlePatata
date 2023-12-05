@@ -5,9 +5,9 @@ import model.units.PlayerCharacter
 
 import cl.uchile.dcc.citric.controller.GameController
 
-class PlayerTurn(val character: PlayerCharacter,c: GameController) extends AState(c: GameController) {
+class PlayerTurn(val character: PlayerCharacter, c: GameController) extends AState(c: GameController) {
   controller.setCurrentPlayer(character)
-  println(s"${character.name} throws the dice\n")
+  println(s"${character.name} throws the dice:\n")
   rollDice()
   def rollDice(): Unit = {
     val roll = character.rollDice()
