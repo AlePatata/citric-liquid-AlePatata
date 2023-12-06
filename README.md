@@ -19,6 +19,10 @@ un tablero en donde para cada panel su lista de paneles siguientes tiene uno o d
 por lo que genera un loop infinito
 - Decidí definir por defecto que si un jugador se topaba con otro en el mismo panel siempre se iniciara un combate
 - Por la implementación que utilicé en Combat, prescindí del state Wait
+- Debido a la modalidad que utilicé en las transiciones para hacer el flujo del juego
+no agregué más test de los necesarios
+- No especifiqué una cantidad fija de jugadores para posibles nuevas implementaciones si se quisisese
+
 
 
 ## About
