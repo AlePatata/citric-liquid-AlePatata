@@ -7,6 +7,9 @@ import cl.uchile.dcc.citric.model.units.PlayerCharacter
 
 import scala.collection.mutable.ArrayBuffer
 
+/** Auxiliary class for use a predefined game board
+ *
+ */
 class Tablero {
   private val centro = new BonusPanel(ArrayBuffer[PlayerCharacter](),ArrayBuffer[Panel]())
   centro.nextPanels += home3
